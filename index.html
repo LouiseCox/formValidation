@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<script src="jquery.min.js"></script>
+	
+		
+	<script>
+		$(document).ready(function(){
+			$('.error-message').hide();
+			
+			$('#username').focusout(function(){
+			var username = $(this).val();
+			var node = $(this).parent().find('.error-message');
+			console.log(username.length);
+				if(username.length < 6){
+					node.show();
+				}
+				else{
+					node.hide();
+				}
+			});
+			
+			
+				$('#confirm_password').focusout(function(){
+				var confrim_password = $(this).val();
+				var password = $('#password').val();
+				var node = $(this).parent().find('.error-message');
+				console.log(confirm_password.length);
+					if(confrim_password !== password){
+						node.show();
+					}
+					else{
+						node.hide();
+					}
+				});
+		});
+	</script>
+		
+	
+
+</head>
+
+<body>
+
+	<form>
+		<p>
+			<label>Username</label>
+			<input type="text" id="username"/><br/>
+			<span class="error-message">Username should be more that 6 characters</span>
+		</p>
+		
+		<p>
+			<label>Password</label>
+			<input type="password" id="password"/>
+		</p>
+		
+		<p>
+			<label>Confirm Password</label>
+			<input type="password" id="confirm_password"/><br/>
+			<span class="error-message">Your passwords do not match</span>
+		</p>
+		
+		<button type="button">Submit</button>
+	
+	</form>
+	
+	<style>
+		.error-message{
+			color: red;
+	</style>
+
+</body>
+
+</html>	
